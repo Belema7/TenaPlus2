@@ -22,7 +22,7 @@ const MissionOfTenaPlus = () => {
   ];
 
   return (
-    <section className="py-20 lg:py-28 bg-gradient-to-b from-white to-teal-50 overflow-hidden">
+    <section className="py-20 lg:py-28 bg-transparent overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           {/* Icon + Heading */}
@@ -31,9 +31,9 @@ const MissionOfTenaPlus = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center justify-center w-20 h-20 bg-teal-100 rounded-3xl mb-8 shadow-lg"
+            className="inline-flex items-center justify-center w-20 h-20 bg-emerald-500/20 rounded-3xl mb-8 shadow-lg"
           >
-            <Target className="h-10 w-10 text-teal-600" />
+            <Target className="h-10 w-10 text-emerald-400" />
           </motion.div>
 
           <motion.h2
@@ -41,7 +41,7 @@ const MissionOfTenaPlus = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 tracking-tight"
+            className="text-4xl md:text-5xl font-extrabold text-white mb-6 tracking-tight"
           >
             Our Mission
           </motion.h2>
@@ -51,10 +51,10 @@ const MissionOfTenaPlus = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="max-w-4xl mx-auto text-xl md:text-2xl text-gray-700 leading-relaxed mb-16"
+            className="max-w-4xl mx-auto text-xl md:text-2xl text-gray-300 leading-relaxed mb-16"
           >
-            To <span className="text-teal-600 font-semibold">empower every individual</span> on their health recovery journey by delivering{" "}
-            <span className="text-teal-600 font-semibold">intelligent, personalized, and truly accessible</span> tools that seamlessly bridge the gap between hospital discharge and full recovery at home.
+            To <span className="text-emerald-400 font-semibold">empower every individual</span> on their health recovery journey by delivering{" "}
+            <span className="text-emerald-400 font-semibold">intelligent, personalized, and truly accessible</span> tools that seamlessly bridge the gap between hospital discharge and full recovery at home.
           </motion.p>
 
           {/* Core Promise */}
@@ -65,7 +65,7 @@ const MissionOfTenaPlus = () => {
             transition={{ duration: 0.7, delay: 0.6 }}
             className="mb-20"
           >
-            <p className="text-2xl md:text-3xl font-medium text-gray-800 italic">
+            <p className="text-2xl md:text-3xl font-medium text-gray-200 italic">
               “Because recovery shouldn’t end at the hospital door.”
             </p>
           </motion.div>
@@ -79,13 +79,15 @@ const MissionOfTenaPlus = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.8 + index * 0.2 }}
-                className="group relative bg-white rounded-2xl p-8 shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-teal-200"
+                className="group relative bg-transparent rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-yellow-600  hover:border-emerald-400/40"
               >
-                <div className="w-14 h-14 bg-teal-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-teal-200 transition-colors">
-                  <value.icon className="h-7 w-7 text-teal-600" />
+                <div className="w-14 h-14 bg-emerald-500/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-emerald-500/30 transition-colors">
+                  <value.icon className="h-7 w-7 text-emerald-400" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{value.description}</p>
+                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-emerald-400 transition-colors">
+                  {value.title}
+                </h3>
+                <p className="text-gray-400 leading-relaxed">{value.description}</p>
               </motion.div>
             ))}
           </div>
@@ -98,9 +100,9 @@ const MissionOfTenaPlus = () => {
             transition={{ duration: 0.8, delay: 1.2 }}
             className="mt-20 text-center"
           >
-            <p className="text-lg md:text-xl text-gray-700 font-medium">
-              We believe that <span className="text-teal-600">continuous support</span> is not a luxury —{" "}
-              <span className="text-teal-600">it’s a right</span>.
+            <p className="text-lg md:text-xl text-gray-300 font-medium">
+              We believe that <span className="text-emerald-400">continuous support</span> is not a luxury —{" "}
+              <span className="text-emerald-400">it’s a right</span>.
             </p>
           </motion.div>
         </div>

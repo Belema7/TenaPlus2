@@ -1,14 +1,14 @@
 import React from "react";
-import logo from '../../assets/images/logo.jpg';
+import logo1 from '../../assets/images/logo1.jpg';
 import { NavLink } from "react-router-dom";
 import {
-    LayoutDashboard,
-    Pill,
-    ListChecks,
-    TrendingUp,
-    Bell,
-    MessageCircle,
-    X
+  LayoutDashboard,
+  Pill,
+  ListChecks,
+  TrendingUp,
+  Bell,
+  MessageCircle,
+  X
 } from "lucide-react";
 
 const navItems = [
@@ -20,16 +20,14 @@ const navItems = [
   { to: "/dashboard/aihelp", label: "AI Assistant", icon: MessageCircle }
 ];
 
-
 const Sidebar = ({ close }) => {
   return (
-    <div className="h-full flex flex-col p-6 text-white">
-
+    <div className="h-full flex flex-col p-6  text-white">
       {/* Mobile Close Button */}
       {close && (
         <button
           onClick={close}
-          className="lg:hidden mb-6 flex items-center gap-2 text-gray-300 hover:text-white"
+          className="lg:hidden mb-6 flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
         >
           <X className="w-6 h-6" />
           Close
@@ -37,18 +35,18 @@ const Sidebar = ({ close }) => {
       )}
 
       {/* Logo */}
-      <div className="flex items-center gap-3 mb-6">
-        <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center">
+      <div className="flex items-center gap-3 mb-8">
+        <div className="w-20 h-20 bg-gray-900 rounded-full flex items-center justify-center shadow-lg">
           <img
-            src={logo}
+            src={logo1}
             alt="TenaPlus Logo"
             className="object-cover w-full h-full rounded-full"
           />
         </div>
 
         <div>
-          <h1 className="text-lg font-bold">TenaPlus</h1>
-          <p className="text-xs text-emerald-200">AI Assistant</p>
+          <h1 className="text-lg font-bold text-white">TenaPlus</h1>
+          <p className="text-xs text-emerald-400">AI Assistant</p>
         </div>
       </div>
 
@@ -61,7 +59,6 @@ const Sidebar = ({ close }) => {
               to={item.to}
               end={item.end}
               onClick={() => {
-                // Close sidebar on mobile when clicking a link
                 if (window.innerWidth < 1024) {
                   close && close();
                 }
@@ -69,8 +66,8 @@ const Sidebar = ({ close }) => {
               className={({ isActive }) =>
                 `flex items-center gap-3 p-3 rounded-lg transition-all duration-200 ${
                   isActive
-                    ? "bg-white text-emerald-700 shadow-lg transform scale-[1.02]"
-                    : "hover:bg-emerald-800 text-emerald-100 hover:scale-[1.02]"
+                    ? "bg-emerald-600 text-white shadow-md transform scale-[1.02]"
+                    : "hover:bg-gray-800 text-gray-300 hover:text-white hover:scale-[1.02]"
                 }`
               }
             >
@@ -80,7 +77,6 @@ const Sidebar = ({ close }) => {
           ))}
         </nav>
       </div>
-
     </div>
   );
 };

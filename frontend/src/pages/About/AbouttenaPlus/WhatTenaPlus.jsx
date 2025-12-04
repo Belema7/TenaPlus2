@@ -5,7 +5,7 @@ import MissionOfTenaPlus from './MissionOfTenaPlus'
 
 const WhatTenaPlus = () => {
   return (
-    <div>
+    <div className="min-h-screen bg-[url('/src/assets/images/bg1.jpeg')] bg-cover bg-center bg-fixed">
         <HeroSectionOfAboutUs/>
         <AboutTenaPlus/>
         <MissionOfTenaPlus/>

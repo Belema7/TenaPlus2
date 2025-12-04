@@ -18,7 +18,7 @@ const NextUp = () => {
 
   return (
     <div className="bg-white rounded-xl p-4 shadow-md mb-6">
-      <h2 className="text-lg font-semibold mb-2">Next Up</h2>
+      <h2 className="text-lg font-semibold mb-2 text-black">Next Up</h2>
       <p className="text-gray-700 font-medium">{nextTask.title}</p>
       <p className="text-gray-500 text-sm">{nextTask.description}</p>
       <p className="text-gray-400 text-sm mt-1">{nextTask.time} • Priority: {nextTask.priority}</p>

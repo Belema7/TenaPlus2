@@ -10,7 +10,7 @@ import Footer from '../../components/Footer/Footer'
 const Home = () => {
   return (
     <LayOut>
-        <div className="min-h-screen">
+        <div className="min-h-screen bg-[url('/src/assets/images/bg2.jpeg')] bg-cover bg-center bg-fixed">
         <HeroSection/>
         <HowItWorks/>
         <Features/>

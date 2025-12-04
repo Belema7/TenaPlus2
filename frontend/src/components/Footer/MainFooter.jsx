@@ -3,7 +3,7 @@ import { Heart, Facebook, Twitter, Instagram } from "lucide-react";
 
 const MainFooter = () => {
   return (
-    <footer className=" lg:grid-cols-3 gap-8 p bg-gray-900 text-white">
+    <footer className=" lg:grid-cols-3 gap-8  text-white">
       {/* Brand Column */}
       <div className="lg:col-span-1">
         <div className="flex items-center gap-2 mb-4">

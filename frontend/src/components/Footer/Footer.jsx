@@ -7,7 +7,7 @@ import FooterBottomBar from "./FooterBottomBar";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white pt-12">
+    <footer className="bg-[url('/src/assets/images/bg1.jpeg')] text-white pt-12">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Top Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">

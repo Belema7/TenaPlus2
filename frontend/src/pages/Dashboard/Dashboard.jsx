@@ -8,9 +8,9 @@ const Dashboard = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="min-h-screen flex bg-white text-black">
+    <div className="min-h-screen flex bg-[url('/src/assets/images/dashboardbg.jpeg')] text-black">
       {/* SIDEBAR DESKTOP */}
-      <div className="hidden lg:block fixed inset-y-0 left-0 w-64 bg-[#004F3B] text-white z-30">
+      <div className="hidden lg:block fixed inset-y-0 left-0 w-64 bg-[#051f20] text-white z-30">
         <Sidebar />
       </div>
 
@@ -34,7 +34,7 @@ const Dashboard = () => {
       {/* MAIN CONTENT */}
       <div className="flex-1 flex flex-col w-full lg:pl-64">
         {/* FIXED HEADER */}
-        <header className="sticky top-0 left-0 right-0 z-30 bg-[#101828] px-4 sm:px-6 lg:px-8 py-4 shadow-md">
+        <header className=" bg-[#0b2b26] px-4 sm:px-6 lg:px-8 py-4 shadow-md">
           <div className="flex items-center justify-between lg:justify-end">
             {/* Mobile Menu Button */}
             <div className="lg:hidden">

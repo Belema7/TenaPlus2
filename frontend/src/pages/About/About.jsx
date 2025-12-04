@@ -8,10 +8,12 @@ import Notice from './Notice'
 const About = () => {
   return (
     <LayOut>
-      <WhatTenaPlus/>
-      <HowItWork/>
-      <WhatMakesUsDifference/>
-      <Notice/>
+      <div className="min-h-screen bg-[url('/src/assets/images/bg2.jpeg')] bg-cover bg-center bg-fixed">
+        <WhatTenaPlus/>
+        {/* <HowItWork/> */}
+        <WhatMakesUsDifference/>
+        <Notice/>
+      </div>
     </LayOut>
   )
 }

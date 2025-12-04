@@ -1,4 +1,4 @@
-// DailyTasks.jsx
+// DailyTasks.jsx - Modern Dark Mode Redesign
 import React, { useContext, useState, useMemo } from "react";
 import { DataContext } from "../../../components/DataProvider/DataProvider";
 import DailyTaskCard from "./components/DailyTaskCard";
@@ -19,7 +19,7 @@ import {
   BarChart3,
   ChevronDown,
   ChevronUp,
-  X
+  X,
 } from "lucide-react";
 
 const DailyTasks = () => {
@@ -31,7 +31,6 @@ const DailyTasks = () => {
 
   const priorityOrder = { high: 1, medium: 2, low: 3 };
 
-  // Filtered + Sorted Tasks
   const sortedTasks = useMemo(() => {
     if (!tasks || tasks.length === 0) return [];
 
@@ -65,7 +64,6 @@ const DailyTasks = () => {
     });
   }, [tasks, filter, searchQuery, sortBy]);
 
-  // Priority Counts
   const priorityCounts = useMemo(
     () => ({
       high: tasks.filter((t) => t.priority?.toLowerCase() === "high").length,
@@ -75,29 +73,30 @@ const DailyTasks = () => {
     [tasks]
   );
 
-  // Empty State
+  // Empty State - Dark Mode
   if (!tasks || tasks.length === 0) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-12 px-4 sm:px-6">
+      <div className="min-h-screen bg-transparent text-white py-12 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl shadow-lg mb-6">
-            <Sparkles className="h-10 w-10 text-white" />
-          </div>
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">Your Health Tasks</h1>
-          <p className="text-gray-600 text-lg mb-8 max-w-xl mx-auto">
-            AI-generated personalized health schedule
+          
+          <h1 className="text-4xl sm:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
+            Your Health Tasks
+          </h1>
+          <p className="text-gray-400 text-lg mb-10">
+            AI-powered personalized health schedule
           </p>
-          <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 sm:p-12">
-            <Calendar className="h-16 w-16 text-gray-300 mx-auto mb-4" />
-            <h2 className="text-2xl font-bold text-gray-800 mb-3">No Tasks Yet</h2>
-            <p className="text-gray-600 mb-6 max-w-md mx-auto">
-              Start by adding your medications to generate a personalized health plan with AI tasks, reminders, and schedules.
+
+          <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-10 shadow-2xl">
+            <Calendar className="h-20 w-20 text-gray-600 mx-auto mb-6" />
+            <h2 className="text-3xl font-bold mb-4">No Tasks Yet</h2>
+            <p className="text-gray-400 mb-8 max-w-md mx-auto text-lg">
+              Add your medications to unlock your personalized AI health plan with reminders and schedules.
             </p>
             <Link
               to="/dashboard/medicineinput"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all shadow-lg hover:shadow-xl"
+              className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-bold text-lg rounded-2xl transform hover:scale-105 transition-all duration-300 shadow-xl shadow-purple-500/30"
             >
-              <Plus className="h-5 w-5" />
+              <Plus className="h-6 w-6" />
               Add Medications
             </Link>
           </div>
@@ -107,120 +106,130 @@ const DailyTasks = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-8 px-4 sm:py-12 sm:px-6">
+    <div className="min-h-screen bg-black text-white py-8 px-4 sm:py-12 sm:px-6">
       <div className="max-w-7xl mx-auto">
-        
-        {/* Main Header */}
+        {/* Header */}
         <DailyTaskHeader />
-        
-        {/* Action Bar */}
-        <div className="mb-8 bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
+
+        {/* Action Bar - Glassmorphism */}
+        <div className="mb-8 bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl p-6">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
             <div className="flex items-center gap-4">
               <button
                 onClick={() => setShowFilters(!showFilters)}
-                className="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-gray-50 to-gray-100 hover:from-gray-100 hover:to-gray-200 text-gray-700 font-medium rounded-xl border border-gray-200 transition-all duration-200"
+                className="flex items-center gap-2 px-5 py-3 bg-white/10 hover:bg-white/20 border border-white/20 rounded-2xl transition-all duration-300"
               >
-                {showFilters ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
-                <span>Filters & Sorting</span>
+                {showFilters ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
+                <span className="font-medium">Filters & Sort</span>
               </button>
+
               <Link
                 to="/dashboard/medicineinput"
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium rounded-xl shadow-md hover:shadow-lg transition-all"
+                className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 rounded-2xl font-semibold shadow-lg shadow-purple-500/30 transform hover:scale-105 transition-all duration-300"
               >
-                <Plus className="h-4 w-4" />
-                <span>Add Medication</span>
+                <Plus className="h-5 w-5" />
+                Add Medication
               </Link>
             </div>
-            
+
             <div className="relative flex-1 max-w-lg">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Search className="h-5 w-5 text-gray-400" />
-              </div>
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
               <input
                 type="text"
-                placeholder="Search tasks by name or description..."
+                placeholder="Search tasks..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                className="w-full pl-12 pr-6 py-4 bg-white/10 border border-white/20 rounded-2xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 placeholder-gray-500 transition-all backdrop-blur"
               />
             </div>
           </div>
-          
-          {/* Expandable Filters Section */}
+
+          {/* Filters Panel */}
           {showFilters && (
-            <div className="mt-6 pt-6 border-t border-gray-200 animate-slide-down">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                {/* Priority Filter */}
+            <div className="mt-8 pt-8 border-t border-white/10 animate-in slide-in-from-top duration-500">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {/* Priority */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center gap-2">
-                    <Filter className="h-4 w-4 text-blue-600" />
-                    Priority Filter
-                  </label>
-                  <div className="grid grid-cols-3 gap-2">
-                    {[
-                      { value: "all", label: "All", bg: "bg-gray-100 hover:bg-gray-200", text: "text-gray-700" },
-                      { value: "high", label: "High", bg: "bg-red-100 hover:bg-red-200", text: "text-red-700" },
-                      { value: "medium", label: "Medium", bg: "bg-yellow-100 hover:bg-yellow-200", text: "text-yellow-700" },
-                      { value: "low", label: "Low", bg: "bg-green-100 hover:bg-green-200", text: "text-green-700" }
-                    ].map((option) => (
+                  <h4 className="flex items-center gap-2 text-sm font-semibold text-gray-300 mb-4">
+                    <Filter className="h-4 w-4 text-purple-400" />
+                    Priority
+                  </h4>
+                  <div className="flex flex-wrap gap-3">
+                    {["all", "high", "medium", "low"].map((val) => (
                       <button
-                        key={option.value}
-                        onClick={() => setFilter(option.value)}
-                        className={`px-3 py-2 rounded-lg font-medium transition ${option.bg} ${option.text} ${filter === option.value ? 'ring-2 ring-offset-2 ring-blue-500' : ''}`}
+                        key={val}
+                        onClick={() => setFilter(val)}
+                        className={`px-5 py-2.5 rounded-xl font-medium transition-all ${
+                          filter === val
+                            ? val === "high"
+                              ? "bg-red-500/20 text-red-400 border border-red-500/50"
+                              : val === "medium"
+                              ? "bg-yellow-500/20 text-yellow-400 border border-yellow-500/50"
+                              : val === "low"
+                              ? "bg-green-500/20 text-green-400 border border-green-500/50"
+                              : "bg-gradient-to-r from-purple-600 to-pink-600 text-white"
+                            : "bg-white/10 hover:bg-white/20 border border-white/20 text-gray-300"
+                        }`}
                       >
-                        {option.label}
+                        {val.charAt(0).toUpperCase() + val.slice(1)}
                       </button>
                     ))}
                   </div>
                 </div>
-                
-                {/* Sort Options */}
+
+                {/* Sort */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center gap-2">
-                    <SortAsc className="h-4 w-4 text-blue-600" />
+                  <h4 className="flex items-center gap-2 text-sm font-semibold text-gray-300 mb-4">
+                    <SortAsc className="h-4 w-4 text-purple-400" />
                     Sort By
-                  </label>
+                  </h4>
                   <div className="space-y-2">
                     {[
                       { value: "time", label: "Time", icon: Clock },
                       { value: "priority", label: "Priority", icon: AlertCircle },
-                      { value: "title", label: "Name", icon: Calendar }
-                    ].map((option) => {
-                      const Icon = option.icon;
-                      return (
-                        <button
-                          key={option.value}
-                          onClick={() => setSortBy(option.value)}
-                          className={`w-full flex items-center gap-2 px-3 py-2 rounded-lg transition ${sortBy === option.value ? 'bg-blue-50 text-blue-700 border border-blue-200' : 'hover:bg-gray-50'}`}
-                        >
-                          <Icon className="h-4 w-4" />
-                          <span>{option.label}</span>
-                          {sortBy === option.value && (
-                            <div className="ml-auto w-2 h-2 bg-blue-500 rounded-full"></div>
-                          )}
-                        </button>
-                      );
-                    })}
+                      { value: "title", label: "Name", icon: Target },
+                    ].map(({ value, label, icon: Icon }) => (
+                      <button
+                        key={value}
+                        onClick={() => setSortBy(value)}
+                        className={`w-full flex items-center justify-between px-4 py-3 rounded-xl transition-all ${
+                          sortBy === value
+                            ? "bg-gradient-to-r from-purple-600/30 to-pink-600/30 border border-purple-500/50"
+                            : "bg-white/5 hover:bg-white/10"
+                        }`}
+                      >
+                        <div className="flex items-center gap-3">
+                          <Icon className="h-5 w-5 text-purple-400" />
+                          <span>{label}</span>
+                        </div>
+                        {sortBy === value && <div className="w-3 h-3 bg-purple-400 rounded-full"></div>}
+                      </button>
+                    ))}
                   </div>
                 </div>
-                
-                {/* Quick Stats */}
-                <div className="md:col-span-2">
-                  <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center gap-2">
-                    <BarChart3 className="h-4 w-4 text-blue-600" />
-                    Priority Breakdown
-                  </label>
-                  <div className="grid grid-cols-3 gap-3">
-                    {Object.entries(priorityCounts).map(([priority, count]) => (
+
+                {/* Stats */}
+                <div>
+                  <h4 className="flex items-center gap-2 text-sm font-semibold text-gray-300 mb-4">
+                    <BarChart3 className="h-4 w-4 text-purple-400" />
+                    Priority Stats
+                  </h4>
+                  <div className="grid grid-cols-3 gap-4">
+                    {Object.entries(priorityCounts).map(([key, count]) => (
                       <div
-                        key={priority}
-                        className={`p-3 rounded-xl border ${priority === 'high' ? 'border-red-200 bg-red-50' : priority === 'medium' ? 'border-yellow-200 bg-yellow-50' : 'border-green-200 bg-green-50'}`}
+                        key={key}
+                        className={`p-4 rounded-2xl text-center border backdrop-blur ${
+                          key === "high"
+                            ? "bg-red-500/10 border-red-500/30"
+                            : key === "medium"
+                            ? "bg-yellow-500/10 border-yellow-500/30"
+                            : "bg-green-500/10 border-green-500/30"
+                        }`}
                       >
-                        <div className="text-sm text-gray-600 capitalize">{priority}</div>
-                        <div className={`text-2xl font-bold ${priority === 'high' ? 'text-red-600' : priority === 'medium' ? 'text-yellow-600' : 'text-green-600'}`}>
+                        <div className="text-3xl font-bold">
                           {count}
                         </div>
+                        <div className="text-sm text-gray-400 capitalize">{key}</div>
                       </div>
                     ))}
                   </div>
@@ -229,149 +238,102 @@ const DailyTasks = () => {
             </div>
           )}
         </div>
-        
-        {/* Motivation & Next Up Side by Side */}
-        <div className="mb-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* <DailyMotivation /> */}
+
+        {/* Motivation + Next Up */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
           <NextUp tasks={tasks} />
+          {/* <DailyMotivation /> */}
         </div>
-        
-        {/* Active Filters Display */}
+
+        {/* Active Filters Chips */}
         {(filter !== "all" || searchQuery || sortBy !== "time") && (
-          <div className="mb-6 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100 rounded-xl">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-              <div className="flex items-center gap-2">
-                <div className="p-1.5 bg-blue-100 rounded-lg">
-                  <Filter className="h-4 w-4 text-blue-600" />
-                </div>
-                <div>
-                  <h4 className="font-medium text-blue-900">Active Filters</h4>
-                  <p className="text-sm text-blue-700">Tasks are filtered based on your selections</p>
-                </div>
-              </div>
-              <div className="flex flex-wrap gap-2">
+          <div className="mb-6 p-5 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl">
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <span className="text-sm text-gray-400">Active filters:</span>
+              <div className="flex flex-wrap gap-3">
                 {filter !== "all" && (
-                  <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-white border border-blue-200 text-blue-700 text-sm font-medium rounded-lg">
-                    <span className="capitalize">{filter} Priority</span>
-                    <button 
+                  <span className="flex items-center gap-2 px-4 py-2 bg-purple-600/30 border border-purple-500/50 rounded-xl text-sm">
+                    {filter} priority
+                    <X
+                      className="h-4 w-4 cursor-pointer hover:text-white"
                       onClick={() => setFilter("all")}
-                      className="hover:text-blue-900 transition"
-                    >
-                      <X className="h-3 w-3" />
-                    </button>
+                    />
                   </span>
                 )}
                 {searchQuery && (
-                  <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-white border border-purple-200 text-purple-700 text-sm font-medium rounded-lg">
-                    <Search className="h-3 w-3" />
-                    <span>"{searchQuery}"</span>
-                    <button 
+                  <span className="flex items-center gap-2 px-4 py-2 bg-white/10 border border-white/30 rounded-xl text-sm">
+                    "{searchQuery}"
+                    <X
+                      className="h-4 w-4 cursor-pointer"
                       onClick={() => setSearchQuery("")}
-                      className="hover:text-purple-900 transition"
-                    >
-                      <X className="h-3 w-3" />
-                    </button>
-                  </span>
-                )}
-                {sortBy !== "time" && (
-                  <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-white border border-green-200 text-green-700 text-sm font-medium rounded-lg">
-                    <SortAsc className="h-3 w-3" />
-                    <span>Sorted by {sortBy}</span>
-                    <button 
-                      onClick={() => setSortBy("time")}
-                      className="hover:text-green-900 transition"
-                    >
-                      <X className="h-3 w-3" />
-                    </button>
+                    />
                   </span>
                 )}
               </div>
             </div>
           </div>
         )}
-        
-        {/* Task Grid Header */}
-        <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+
+        {/* Tasks Header */}
+        <div className="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">Your Tasks</h2>
-            <p className="text-gray-600">
-              {sortedTasks.length} of {tasks.length} tasks shown
-              {filter !== "all" && ` • Filtered by ${filter} priority`}
+            <h2 className="text-3xl font-bold">Your Tasks</h2>
+            <p className="text-gray-400">
+              {sortedTasks.length} shown • {tasks.length} total
             </p>
           </div>
-          <div className="flex items-center gap-2">
-            <div className="text-sm text-gray-500">
-              <span className="font-medium">{sortedTasks.filter(t => t.completed).length}</span> completed •{" "}
-              <span className="font-medium">{sortedTasks.filter(t => !t.completed).length}</span> remaining
-            </div>
-            <button
-              onClick={() => {
-                setFilter("all");
-                setSearchQuery("");
-                setSortBy("time");
-              }}
-              className="inline-flex items-center gap-2 px-3 py-1.5 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition"
-              disabled={filter === "all" && !searchQuery && sortBy === "time"}
-            >
-              <X className="h-3 w-3" />
-              Clear all
-            </button>
-          </div>
+          <button
+            onClick={() => {
+              setFilter("all");
+              setSearchQuery("");
+              setSortBy("time");
+            }}
+            className="text-sm text-gray-400 hover:text-white transition"
+          >
+            Clear filters
+          </button>
         </div>
-        
-        {/* Tasks Grid */}
+
+        {/* Task Grid */}
         {sortedTasks.length === 0 ? (
-          <div className="bg-white rounded-2xl border border-gray-200 p-12 text-center">
-            <div className="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-              <Search className="h-8 w-8 text-gray-400" />
-            </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2">No matching tasks</h3>
-            <p className="text-gray-600 mb-6 max-w-md mx-auto">
-              No tasks found with the current filters. Try adjusting your search or filter criteria.
-            </p>
+          <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-16 text-center">
+            <Search className="h-16 w-16 text-gray-600 mx-auto mb-6" />
+            <h3 className="text-2xl font-bold mb-3">No tasks found</h3>
+            <p className="text-gray-400 mb-8">Try adjusting your filters</p>
             <button
               onClick={() => {
                 setFilter("all");
                 setSearchQuery("");
                 setSortBy("time");
               }}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium rounded-xl hover:from-blue-700 hover:to-indigo-700 transition"
+              className="px-8 py-3 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl font-semibold hover:scale-105 transition"
             >
-              Clear all filters
+              Reset Filters
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {sortedTasks.map((task) => (
               <DailyTaskCard key={task.id} task={task} />
             ))}
           </div>
         )}
-        
+
         {/* Footer */}
-        <div className="mt-8 pt-6 border-t border-gray-200">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <p className="text-sm text-gray-600">
-              <span className="font-medium">{sortedTasks.length}</span> tasks •{" "}
-              <span className="font-medium text-green-600">{Math.round((sortedTasks.filter(t => t.completed).length / sortedTasks.length) * 100) || 0}%</span> completion rate
-            </p>
-            <div className="flex items-center gap-4">
-              <Link
-                to="/dashboard/medicineinput"
-                className="inline-flex items-center gap-2 text-sm text-blue-600 hover:text-blue-700 font-medium"
-              >
-                <Plus className="h-4 w-4" />
-                Add more medications
-              </Link>
-              <div className="h-4 w-px bg-gray-300"></div>
-              <Link
-                to="/dashboard/ai"
-                className="inline-flex items-center gap-2 text-sm text-indigo-600 hover:text-indigo-700 font-medium"
-              >
-                <Sparkles className="h-4 w-4" />
-                Ask AI Assistant
-              </Link>
-            </div>
+        <div className="mt-12 pt-8 border-t border-white/10 text-center text-gray-400">
+          <p className="text-lg">
+            <span className="text-white font-bold">{sortedTasks.filter(t => t.completed).length}</span> completed •{" "}
+            <span className="text-green-400 font-bold">
+              {Math.round((sortedTasks.filter(t => t.completed).length / sortedTasks.length) * 100) || 0}%
+            </span>{" "}done
+          </p>
+          <div className="mt-6 flex justify-center gap-8">
+            <Link to="/dashboard/medicineinput" className="flex items-center gap-2 hover:text-white transition">
+              <Plus className="h-5 w-5" /> Add Medication
+            </Link>
+            <Link to="/dashboard/ai" className="flex items-center gap-2 hover:text-white transition">
+              <Sparkles className="h-5 w-5" /> Ask AI
+            </Link>
           </div>
         </div>
       </div>
