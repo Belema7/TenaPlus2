@@ -252,7 +252,7 @@ const DashboardBody = () => {
   {/* Footer */}
   <div className="mt-6 pt-5 border-t border-gray-800 text-center">
     <p className="text-xs text-teal-400 font-medium">
-      Consistency > Perfection
+      Consistency over Perfection
     </p>
   </div>
 </section>
