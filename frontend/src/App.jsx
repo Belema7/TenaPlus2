@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
 import Routing from './routing/Routing'
-import { auth } from './Utility/firebase'
+import {auth} from './Utility/firebase'
+
 import { onAuthStateChanged } from 'firebase/auth'
 import { DataContext } from './components/DataProvider/DataProvider'
 import { Type } from './Utility/action.type'
