@@ -19,6 +19,7 @@ import {
   Award, 
   Heart,
    Zap,
+   CheckCircle2,
 } from "lucide-react";
 
 const DashboardBody = () => {
