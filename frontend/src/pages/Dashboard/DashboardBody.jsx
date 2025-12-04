@@ -324,6 +324,16 @@ const DashboardBody = () => {
 
   </div>
 </section>
+    {/* navigation */}
+    <section className="flex gap-4 justify-center lg:hidden">
+      <Link to='/' className="bg-gray-800/50 backdrop-blur border border-white/10 rounded-2xl p-4  mt-10 text-sm text-gray-500 hover:text-white transition-colors">
+        Home
+      </Link>
+      <Link to='/about' className="bg-gray-800/50 backdrop-blur border border-white/10 rounded-2xl p-4  mt-10 text-sm text-gray-500 hover:text-white transition-colors">
+         About
+      </Link>
+
+    </section>
     </div>
   );
 };
