@@ -127,7 +127,7 @@ const DashboardBody = () => {
 
 <div className="flex justify-between flex-col lg:flex-row">
       {/* Progress Overview */}
-      <section className="bg-gray-700 w-180">
+      <section className="bg-gray-700 md:w-180">
         <div className="flex items-center justify-between mb-6 ">
           <h2 className="text-2xl font-bold text-white">Progress Overview</h2>
           <Sparkles className="h-5 w-5 text-amber-400" />
